@@ -46,6 +46,9 @@ export const RequestDetail: React.FC = () => {
   const [assignedToId, setAssignedToId] = useState<string>('');
   const [isAssigning, setIsAssigning] = useState<boolean>(false);
 
+  // Dynamic backend URL for uploaded images
+  const backendUrl = (api.defaults.baseURL || 'http://localhost:5000/api').replace(/\/api$/, '');
+
   const fetchRequestDetails = async () => {
     try {
       setIsLoading(true);
@@ -276,12 +279,12 @@ export const RequestDetail: React.FC = () => {
                   {request.images.map((img) => (
                     <a
                       key={img.id}
-                      href={img.imageUrl.startsWith('/uploads') ? `http://localhost:5000${img.imageUrl}` : img.imageUrl}
+                      href={img.imageUrl.startsWith('/uploads') ? `${backendUrl}${img.imageUrl}` : img.imageUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="aspect-video rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 hover:scale-[1.02] active:scale-95 transition-all"
                     >
-                      <img src={img.imageUrl.startsWith('/uploads') ? `http://localhost:5000${img.imageUrl}` : img.imageUrl} alt="Return Evidence" className="w-full h-full object-cover" />
+                      <img src={img.imageUrl.startsWith('/uploads') ? `${backendUrl}${img.imageUrl}` : img.imageUrl} alt="Return Evidence" className="w-full h-full object-cover" />
                     </a>
                   ))}
                 </div>
