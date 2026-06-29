@@ -5,8 +5,7 @@ services:
     runtime: node
     plan: free
     rootDir: backend
-    buildCommand: npm install && npm run build
-    preDeployCommand: npx prisma db push && npm run db:seed:prod
+    buildCommand: npm install && npm run build && npx prisma db push && npm run db:seed:prod
     startCommand: npm start
     envVars:
       - key: PORT
