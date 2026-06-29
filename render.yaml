@@ -23,8 +23,9 @@ services:
         sync: false
 
   # 2. Frontend Static Site
-  - type: static
+  - type: web
     name: return-system-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
