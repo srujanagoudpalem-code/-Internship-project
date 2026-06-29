@@ -2,7 +2,7 @@ services:
   # 1. Backend Web Service
   - type: web
     name: return-system-backend
-    env: node
+    runtime: node
     plan: free
     rootDir: backend
     buildCommand: npm install && npm run build
@@ -25,6 +25,7 @@ services:
   # 2. Frontend Static Site
   - type: static
     name: return-system-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
