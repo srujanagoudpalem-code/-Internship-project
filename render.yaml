@@ -25,7 +25,6 @@ services:
   # 2. Frontend Static Site
   - type: static
     name: return-system-frontend
-    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
